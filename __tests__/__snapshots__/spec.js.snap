@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GeocodeUtils for a city Should just parse 1`] = `
+Object {
+  "address": null,
+  "city": "Miami",
+  "formatted": "Miami, FL, USA",
+  "state": "Florida",
+  "zip": null,
+}
+`;
+
+exports[`GeocodeUtils for a property Should just parse 1`] = `
+Object {
+  "address": null,
+  "city": null,
+  "formatted": "247 Water St, Brooklyn, NY 11201, USA",
+  "state": "New York",
+  "zip": "11201",
+}
+`;

@@ -1,0 +1,74 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "247",
+               "short_name" : "247",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "Water Street",
+               "short_name" : "Water St",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Vinegar Hill",
+               "short_name" : "Vinegar Hill",
+               "types" : [ "neighborhood", "political" ]
+            },
+            {
+               "long_name" : "Brooklyn",
+               "short_name" : "Brooklyn",
+               "types" : [ "political", "sublocality", "sublocality_level_1" ]
+            },
+            {
+               "long_name" : "Kings County",
+               "short_name" : "Kings County",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "New York",
+               "short_name" : "NY",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "11201",
+               "short_name" : "11201",
+               "types" : [ "postal_code" ]
+            },
+            {
+               "long_name" : "1235",
+               "short_name" : "1235",
+               "types" : [ "postal_code_suffix" ]
+            }
+         ],
+         "formatted_address" : "247 Water St, Brooklyn, NY 11201, USA",
+         "geometry" : {
+            "location" : {
+               "lat" : 40.7031,
+               "lng" : -73.98403399999999
+            },
+            "location_type" : "ROOFTOP",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 40.7044489802915,
+                  "lng" : -73.9826850197085
+               },
+               "southwest" : {
+                  "lat" : 40.7017510197085,
+                  "lng" : -73.9853829802915
+               }
+            }
+         },
+         "place_id" : "ChIJeQK8JjNawokRiDzr6Q7g8V4",
+         "types" : [ "street_address" ]
+      }
+   ],
+   "status" : "OK"
+}
