@@ -5,6 +5,10 @@ This is a utility to help parse raw geocoded data returned from Google Geocode A
 ## Usage
 
 ```
+$ npm install --save google-geocode-parser
+```
+
+```
 const GeocodeParser = require('google-geocode-parser');
 const request = await fetch('https://maps.googleapis.com/maps/api/geocode/json?address=247%20water%20street%20brooklyn');
 const results = await request.json();
