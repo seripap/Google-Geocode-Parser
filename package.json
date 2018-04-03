@@ -15,10 +15,9 @@
     "url": "git+https://github.com/seripap/Google-Geocode-Parser"
   },
   "keywords": [
-    "vainglory",
-    "client",
-    "api",
-    "game"
+    "google",
+    "geocode",
+    "parser"
   ],
   "author": "Daniel Seripap",
   "license": "MIT",
