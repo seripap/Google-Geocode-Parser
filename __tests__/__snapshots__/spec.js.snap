@@ -5,6 +5,33 @@ Object {
   "address": null,
   "city": "Miami",
   "formatted": "Miami, FL, USA",
+  "geometry": Object {
+    "bounds": Object {
+      "northeast": Object {
+        "lat": 25.855773,
+        "lng": -80.139157,
+      },
+      "southwest": Object {
+        "lat": 25.709042,
+        "lng": -80.3197599,
+      },
+    },
+    "location": Object {
+      "lat": 25.7616798,
+      "lng": -80.1917902,
+    },
+    "location_type": "APPROXIMATE",
+    "viewport": Object {
+      "northeast": Object {
+        "lat": 25.855773,
+        "lng": -80.139157,
+      },
+      "southwest": Object {
+        "lat": 25.709042,
+        "lng": -80.3197599,
+      },
+    },
+  },
   "state": "Florida",
   "zip": null,
 }
@@ -15,6 +42,23 @@ Object {
   "address": null,
   "city": null,
   "formatted": "247 Water St, Brooklyn, NY 11201, USA",
+  "geometry": Object {
+    "location": Object {
+      "lat": 40.7031,
+      "lng": -73.984034,
+    },
+    "location_type": "ROOFTOP",
+    "viewport": Object {
+      "northeast": Object {
+        "lat": 40.7044489802915,
+        "lng": -73.9826850197085,
+      },
+      "southwest": Object {
+        "lat": 40.7017510197085,
+        "lng": -73.9853829802915,
+      },
+    },
+  },
   "state": "New York",
   "zip": "11201",
 }

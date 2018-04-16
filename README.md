@@ -45,6 +45,7 @@ Returns a parsed output of the results.
     formatted,
     address,
     city,
+    geometry,
     state,
     zip
 }

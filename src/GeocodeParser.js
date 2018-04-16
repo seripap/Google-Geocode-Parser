@@ -43,6 +43,7 @@ class GeocodeParser {
       formatted: this.data.formatted_address,
       address: this.getComponent('street_address'),
       city: this.getComponent('locality'),
+      geometry: this.data.geometry,
       state: this.getComponent('administrative_area_level_1'),
       zip: this.getComponent('postal_code'),
     }
