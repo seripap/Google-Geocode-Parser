@@ -19,11 +19,11 @@ class GeocodeParser {
   }
 
   isCity() {
-    return this.isType(['locality', 'sublocality', 'sublocality_level_1', 'sublocality_level_2', 'sublocality_level_3', 'sublocality_level_4', 'sublocality_level_5']);
+    return this.isType(['locality', 'sublocality', 'political', 'neighborhood', 'sublocality_level_1', 'sublocality_level_2', 'sublocality_level_3', 'sublocality_level_4', 'sublocality_level_5']);
   }
 
   isAddress() {
-    return this.isType(['street_address', 'street_number', 'route', 'premise', 'subpremise', 'neighborhood', 'point_of_interest', 'park', 'airport']);
+    return this.isType(['street_address', 'street_number', 'route', 'premise', 'subpremise', 'point_of_interest', 'park', 'airport']);
   }
 
   isState() {
