@@ -40,7 +40,7 @@ Object {
 exports[`GeocodeUtils for a property Should just parse 1`] = `
 Object {
   "address": null,
-  "city": null,
+  "city": "Brooklyn",
   "formatted": "247 Water St, Brooklyn, NY 11201, USA",
   "geometry": Object {
     "location": Object {

@@ -32,7 +32,15 @@ describe('GeocodeUtils for a city', () => {
 
   it('Should just parse', () => {
     expect(city.parse()).toMatchSnapshot();
-  })
+  });
+
+  it('Should get parsable data from helpers', () => {
+    expect(city.getCity()).toBe('Miami');
+    expect(city.getState()).toBe('Florida');
+    expect(city.getZip()).toBe(null);
+    expect(city.getGeo()).toBeDefined();
+  });
+
 });
 
 describe('GeocodeUtils for a property', () => {
@@ -49,5 +57,12 @@ describe('GeocodeUtils for a property', () => {
   
   it('Should just parse', () => {
     expect(property.parse()).toMatchSnapshot();
-  })
+  });
+
+  it('Should get parsable data from helpers', () => {
+    expect(property.getCity()).toBe('Brooklyn');
+    expect(property.getState()).toBe('New York');
+    expect(property.getZip()).toBe('11201');
+    expect(property.getGeo()).toBeDefined();
+  });
 });
