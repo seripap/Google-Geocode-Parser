@@ -38,11 +38,27 @@ class GeocodeParser {
     return this.isType(['postal_code']);
   }
 
+  getCity(useShort = false) {
+    return this.getComponent('locality', useShort) || this.getComponent('sublocality', useShort);
+  }
+
+  getState(useShort = false) {
+    return this.getComponent('administrative_area_level_1', useShort);
+  }
+
+  getZip(useShort = false) {
+    return this.getComponent('postal_code', useShort);
+  }
+
+  getGeo() {
+    return this.data.geometry;
+  }
+
   parse() {
     return {
       formatted: this.data.formatted_address,
       address: this.getComponent('street_address'),
-      city: this.getComponent('locality'),
+      city: this.getComponent('locality') || this.getComponent('sublocality'),
       geometry: this.data.geometry,
       state: this.getComponent('administrative_area_level_1'),
       zip: this.getComponent('postal_code'),
