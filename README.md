@@ -60,3 +60,7 @@ These are simple built in functions designed to quickly parse results returned f
 - `isState()`
 - `isCounty()`
 - `isZip()` 
+- `getCity()`
+- `getState()`
+- `getZip()`
+- `getGeo()`
