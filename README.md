@@ -1,4 +1,6 @@
 # Google Geocode Parser
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fseripap%2FGoogle-Geocode-Parser.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fseripap%2FGoogle-Geocode-Parser?ref=badge_shield)
+
 
 This is a utility to help parse raw geocoded data returned from Google Geocode API services.
 
@@ -64,3 +66,7 @@ These are simple built in functions designed to quickly parse results returned f
 - `getState()`
 - `getZip()`
 - `getGeo()`
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fseripap%2FGoogle-Geocode-Parser.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fseripap%2FGoogle-Geocode-Parser?ref=badge_large)
