@@ -64,3 +64,8 @@ These are simple built in functions designed to quickly parse results returned f
 - `getState()`
 - `getZip()`
 - `getGeo()`
+- `getStreetNumber()`
+- `getStreetAddress()`
+- `getLat()`
+- `getLng()`
+- `getLatLng()`
