@@ -64,5 +64,10 @@ describe('GeocodeUtils for a property', () => {
     expect(property.getState()).toBe('New York');
     expect(property.getZip()).toBe('11201');
     expect(property.getGeo()).toBeDefined();
+    expect(property.getStreetNumber()).toBe('247');
+    expect(property.getStreetAddress()).toBe('Water Street');
+    expect(property.getLat()).toBe(40.7031);
+    expect(property.getLng()).toBe(-73.984034);
+    expect(property.getLatLng()).toBe('40.7031,-73.984034');
   });
 });

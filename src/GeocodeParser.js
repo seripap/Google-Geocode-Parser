@@ -38,6 +38,20 @@ class GeocodeParser {
     return this.isType(['postal_code']);
   }
 
+  getStreetNumber(useShort) {
+    if (!this.isAddress()) {
+      return null;
+    }
+    return this.getComponent('street_number', useShort);
+  }
+
+  getStreetAddress(useShort) {
+    if (!this.isAddress()) {
+      return null;
+    }
+    return this.getComponent('route', useShort);
+  }
+
   getCity(useShort = false) {
     return this.getComponent('locality', useShort) || this.getComponent('sublocality', useShort);
   }
@@ -52,6 +66,37 @@ class GeocodeParser {
 
   getGeo() {
     return this.data.geometry;
+  }
+
+  getLat() {
+    const geo = this.getGeo();
+    
+    if (geo && geo.location) {
+      return geo.location.lat;
+    }
+    
+    return null;
+  }
+  
+  getLng() {
+    const geo = this.getGeo();
+    
+    if (geo && geo.location) {
+      return geo.location.lng;
+    }
+    
+    return null;
+  }
+
+  getLatLng() {
+    const lat = this.getLat();
+    const lng = this.getLng();
+
+    if (lat && lng) {
+      return `${lat},${lng}`;
+    }
+    
+    return null;
   }
 
   parse() {
