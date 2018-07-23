@@ -72,7 +72,7 @@ class GeocodeParser {
     const geo = this.getGeo();
     
     if (geo && geo.location) {
-      return geo.location.lat;
+      return geo.location.lat();
     }
     
     return null;
@@ -82,7 +82,7 @@ class GeocodeParser {
     const geo = this.getGeo();
     
     if (geo && geo.location) {
-      return geo.location.lng;
+      return geo.location.lng();
     }
     
     return null;
