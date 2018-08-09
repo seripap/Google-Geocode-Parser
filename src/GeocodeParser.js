@@ -5,16 +5,32 @@ class GeocodeParser {
     this.data = this.__internals_GetResults(data);
   }
 
-  __internals_GetResults(data) {
-    const { results = null } = data || {};
+  __internals_GetResults(data = {}) {
+    const { results = null, status = null } = data || {};
+
+    if (status !== 'OK') {
+      return null;
+    }
+
     return results ? results[0] : null;
   }
 
+  get isValid() {
+    return this.data ? true : false;
+  }
+
   getComponent(key, useShort = false) {
+    if (!this.data) {
+      return null;
+    }
     return filterComponents(this.data.address_components, key, useShort);
   }
 
   isType(type = []) {
+    if (!this.data) {
+      return false;
+    }
+
     return filterType(this.data, type);
   }
 
@@ -72,6 +88,9 @@ class GeocodeParser {
     const geo = this.getGeo();
     
     if (geo && geo.location) {
+      if (typeof geo.location.lat === 'function') {
+        return geo.location.lat();
+      }
       return geo.location.lat;
     }
     
@@ -82,6 +101,9 @@ class GeocodeParser {
     const geo = this.getGeo();
     
     if (geo && geo.location) {
+      if (typeof geo.location.lng === 'function') {
+        return geo.location.lng();
+      }
       return geo.location.lng;
     }
     

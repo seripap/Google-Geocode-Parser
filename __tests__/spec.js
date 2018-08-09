@@ -2,6 +2,7 @@ const GeocodeUtils = require('../src/index.js');
 
 const mockCityData = require('../__mocks__/sample-city.json');
 const mockPropertyData = require('../__mocks__/sample-property.json');
+const mockBadData = require('../__mocks__/sample-bad.json');
 
 describe('GeocodeUtils', () => {
   it('Should return an instance of itself', () => {
@@ -11,10 +12,15 @@ describe('GeocodeUtils', () => {
   it('_pluck should pull from results', () => {
     const utils = new GeocodeUtils();
     const utilsWithData = new GeocodeUtils(mockCityData);
-    const utilsWithBadData = new GeocodeUtils({ bad: true });
-    expect(utils.data).toBe(null);
+    expect(utils.data).toBe(null);    
     expect(utilsWithData.data).toBeDefined();
+    expect(utilsWithData.isValid).toBe(true);
+  });
+
+  it('Should not init with status !== OK', () => {
+    const utilsWithBadData = new GeocodeUtils(mockBadData);
     expect(utilsWithBadData.data).toBe(null);
+    expect(utilsWithBadData.isValid).toBe(false);
   });
 });
 
