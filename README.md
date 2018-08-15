@@ -56,6 +56,8 @@ Returns a parsed output of the results.
 These are simple built in functions designed to quickly parse results returned from the Google Geocode service.
 
 - `.isValid` - Geocode status === OK
+- `isNeighborhood()`
+- `isAirport()`
 - `isCity()`
 - `isAddress()`
 - `isState()`
