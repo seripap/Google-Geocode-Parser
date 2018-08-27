@@ -1,18 +1,23 @@
 const { filterType, filterComponents} = require('./utils/filters.js');
 
-class GeocodeParser {
-  constructor(data = {}) {
-    this.data = this.__internals_GetResults(data);
+/**
+ * We are parsing raw data from the google geocode API
+ * These data objects must mimic what is provided as a
+ * response from Google APIs (see __mocks__)
+ */
+function __internals_get_results(data = {}) {
+  const { results = null, status = null } = data || {};
+
+  if (status !== 'OK') {
+    return null;
   }
 
-  __internals_GetResults(data = {}) {
-    const { results = null, status = null } = data || {};
+  return results ? results[0] : null;
+}
 
-    if (status !== 'OK') {
-      return null;
-    }
-
-    return results ? results[0] : null;
+class GeocodeParser {
+  constructor(data = {}) {
+    this.data = __internals_get_results(data);
   }
 
   get isValid() {
@@ -86,6 +91,10 @@ class GeocodeParser {
 
   getZip(useShort = false) {
     return this.getComponent('postal_code', useShort);
+  }
+
+  getNeighborhood(useShort = false) {
+    return this.getComponent('neighborhood', useShort);
   }
 
   getGeo() {

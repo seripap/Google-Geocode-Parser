@@ -3,6 +3,7 @@ const GeocodeUtils = require('../src/index.js');
 const mockCityData = require('../__mocks__/sample-city.json');
 const mockPropertyData = require('../__mocks__/sample-property.json');
 const mockBadData = require('../__mocks__/sample-bad.json');
+const mockNeighbor = require('../__mocks__/sample-neighborhood.json');
 
 describe('GeocodeUtils', () => {
   it('Should return an instance of itself', () => {
@@ -31,6 +32,7 @@ describe('GeocodeUtils for a city', () => {
 
   it('Should parse city data correctly', () => {
     expect(city.isCity()).toBe(true);
+    expect(city.isNeighborhood()).toBe(false);
     expect(city.isAddress()).toBe(false);
     expect(city.isState()).toBe(false);
     expect(city.isCounty()).toBe(false);
@@ -42,6 +44,7 @@ describe('GeocodeUtils for a city', () => {
 
   it('Should get parsable data from helpers', () => {
     expect(city.getCity()).toBe('Miami');
+    expect(city.getNeighborhood()).toBe(null);
     expect(city.getState()).toBe('Florida');
     expect(city.getZip()).toBe(null);
     expect(city.getGeo()).toBeDefined();
@@ -56,6 +59,7 @@ describe('GeocodeUtils for a property', () => {
 
   it('Should parse property data correctly', () => {
     expect(property.isCity()).toBe(false);
+    expect(property.isNeighborhood()).toBe(false);    
     expect(property.isAddress()).toBe(true);
     expect(property.isState()).toBe(false);
     expect(property.isCounty()).toBe(false);
@@ -67,6 +71,7 @@ describe('GeocodeUtils for a property', () => {
 
   it('Should get parsable data from helpers', () => {
     expect(property.getCity()).toBe('Brooklyn');
+    expect(property.getNeighborhood()).toBe('Vinegar Hill');
     expect(property.getState()).toBe('New York');
     expect(property.getZip()).toBe('11201');
     expect(property.getGeo()).toBeDefined();
@@ -76,4 +81,17 @@ describe('GeocodeUtils for a property', () => {
     expect(property.getLng()).toBe(-73.984034);
     expect(property.getLatLng()).toBe('40.7031,-73.984034');
   });
+});
+
+describe('GeocodeUtils for neighborhood', () => {
+  let hood = null;
+
+  beforeEach(() => hood = new GeocodeUtils(mockNeighbor) );
+
+  it('Should parse neighborhood data correctly', () => {
+    expect(hood.isCity()).toBe(true);
+    expect(hood.isNeighborhood()).toBe(true);    
+    expect(hood.getNeighborhood()).toBe('North Beach Haven');
+  });
+
 });

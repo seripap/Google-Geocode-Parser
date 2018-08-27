@@ -1,0 +1,74 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "North Beach Haven",
+               "short_name" : "North Beach Haven",
+               "types" : [ "neighborhood", "political" ]
+            },
+            {
+               "long_name" : "Brant Beach",
+               "short_name" : "Brant Beach",
+               "types" : [ "political", "sublocality", "sublocality_level_1" ]
+            },
+            {
+               "long_name" : "Long Beach Township",
+               "short_name" : "Long Beach Township",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Ocean County",
+               "short_name" : "Ocean County",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "New Jersey",
+               "short_name" : "NJ",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "08008",
+               "short_name" : "08008",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "North Beach Haven, Long Beach Township, NJ 08008, USA",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 39.6366691,
+                  "lng" : -74.18341199999999
+               },
+               "southwest" : {
+                  "lat" : 39.569527,
+                  "lng" : -74.23655099999999
+               }
+            },
+            "location" : {
+               "lat" : 39.5731739,
+               "lng" : -74.2315292
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 39.6366691,
+                  "lng" : -74.18341199999999
+               },
+               "southwest" : {
+                  "lat" : 39.569527,
+                  "lng" : -74.23655099999999
+               }
+            }
+         },
+         "place_id" : "ChIJZeEKrXCqwYkRctHQ_XM5H4s",
+         "types" : [ "neighborhood", "political" ]
+      }
+   ],
+   "status" : "OK"
+}

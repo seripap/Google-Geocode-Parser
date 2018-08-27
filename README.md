@@ -1,4 +1,4 @@
-# Google Geocode Parser
+# Google Geocode Parser [![Build Status](https://travis-ci.org/seripap/Google-Geocode-Parser.svg?branch=master)](https://travis-ci.org/seripap/Google-Geocode-Parser)
 
 This is a utility to help parse raw geocoded data returned from Google Geocode API services.
 
@@ -65,6 +65,7 @@ These are simple built in functions designed to quickly parse results returned f
 - `isZip()` 
 - `getCity()`
 - `getState()`
+- `getNeighborhood()`
 - `getZip()`
 - `getGeo()`
 - `getStreetNumber()`
