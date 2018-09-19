@@ -1,0 +1,58 @@
+{
+  "results": [{
+    "address_components": [{
+      "long_name": "11",
+      "short_name": "11",
+      "types": ["street_number"]
+    }, {
+      "long_name": "North Ridge Place",
+      "short_name": "N Ridge Pl",
+      "types": ["route"]
+    }, {
+      "long_name": "Beaufort",
+      "short_name": "Beaufort",
+      "types": ["locality", "political"]
+    }, {
+      "long_name": "Beaufort County",
+      "short_name": "Beaufort County",
+      "types": ["administrative_area_level_2", "political"]
+    }, {
+      "long_name": "South Carolina",
+      "short_name": "SC",
+      "types": ["administrative_area_level_1", "political"]
+    }, {
+      "long_name": "United States",
+      "short_name": "US",
+      "types": ["country", "political"]
+    }, {
+      "long_name": "29906",
+      "short_name": "29906",
+      "types": ["postal_code"]
+    }, {
+      "long_name": "7929",
+      "short_name": "7929",
+      "types": ["postal_code_suffix"]
+    }],
+    "formatted_address": "11 N Ridge Pl, Beaufort, SC 29906, USA",
+    "geometry": {
+      "location": {
+        "lat": 32.494754,
+        "lng": -80.74584
+      },
+      "location_type": "ROOFTOP",
+      "viewport": {
+        "northeast": {
+          "lat": 32.4961029802915,
+          "lng": -80.7444910197085
+        },
+        "southwest": {
+          "lat": 32.4934050197085,
+          "lng": -80.74718898029151
+        }
+      }
+    },
+    "place_id": "ChIJqY6uzxUJ_IgRuJ14eY2rvFs",
+    "types": ["street_address"]
+  }],
+  "status": "OK"
+}
