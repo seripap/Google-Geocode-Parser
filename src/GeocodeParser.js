@@ -1,29 +1,58 @@
 const { filterType, filterComponents} = require('./utils/filters.js');
 
-class GeocodeParser {
-  constructor(data = {}) {
-    this.data = this.__internals_GetResults(data);
+/**
+ * We are parsing raw data from the google geocode API
+ * These data objects must mimic what is provided as a
+ * response from Google APIs (see __mocks__)
+ */
+function __internals_get_results(data = {}) {
+  const { results = null, status = null } = data || {};
+
+  if (status !== 'OK') {
+    return null;
   }
 
-  __internals_GetResults(data) {
-    const { results = null } = data || {};
-    return results ? results[0] : null;
+  return results ? results[0] : null;
+}
+
+class GeocodeParser {
+  constructor(data = {}) {
+    this.data = __internals_get_results(data);
+  }
+
+  get isValid() {
+    return this.data ? true : false;
   }
 
   getComponent(key, useShort = false) {
+    if (!this.data) {
+      return null;
+    }
     return filterComponents(this.data.address_components, key, useShort);
   }
 
   isType(type = []) {
+    if (!this.data) {
+      return false;
+    }
+
     return filterType(this.data, type);
   }
 
   isCity() {
-    return this.isType(['locality', 'sublocality', 'political', 'neighborhood', 'sublocality_level_1', 'sublocality_level_2', 'sublocality_level_3', 'sublocality_level_4', 'sublocality_level_5']);
+    return this.isType(['locality', 'sublocality', 'political', 'sublocality_level_1', 'sublocality_level_2', 'sublocality_level_3', 'sublocality_level_4', 'sublocality_level_5']);
+  }
+
+  isNeighborhood() {
+    return this.isType(['neighborhood']);
   }
 
   isAddress() {
     return this.isType(['street_address', 'street_number', 'route', 'premise', 'subpremise', 'point_of_interest', 'park', 'airport']);
+  }
+
+  isAirport() {
+    return this.isType(['airport']);
   }
 
   isState() {
@@ -64,27 +93,37 @@ class GeocodeParser {
     return this.getComponent('postal_code', useShort);
   }
 
+  getNeighborhood(useShort = false) {
+    return this.getComponent('neighborhood', useShort);
+  }
+
   getGeo() {
     return this.data.geometry;
   }
 
   getLat() {
     const geo = this.getGeo();
-    
+
     if (geo && geo.location) {
-      return geo.location.lat();
+      if (typeof geo.location.lat === 'function') {
+        return geo.location.lat();
+      }
+      return geo.location.lat;
     }
-    
+
     return null;
   }
-  
+
   getLng() {
     const geo = this.getGeo();
-    
+
     if (geo && geo.location) {
-      return geo.location.lng();
+      if (typeof geo.location.lng === 'function') {
+        return geo.location.lng();
+      }
+      return geo.location.lng;
     }
-    
+
     return null;
   }
 
@@ -95,7 +134,7 @@ class GeocodeParser {
     if (lat && lng) {
       return `${lat},${lng}`;
     }
-    
+
     return null;
   }
 
