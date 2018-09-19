@@ -1,4 +1,5 @@
-const { filterType, filterComponents} = require('./utils/filters.js');
+
+const { checkSuffix, checkPredirectional, checkPostdirectional, filterType, filterComponents } = require('./utils/index')
 
 /**
  * We are parsing raw data from the google geocode API
@@ -99,6 +100,30 @@ class GeocodeParser {
 
   getGeo() {
     return this.data.geometry;
+  }
+
+  getSuffix() {
+    if (!this.isAddress()) {
+      return null;
+    }
+
+    return checkSuffix(this.getStreetAddress(true));
+  }
+
+  getPredirectional() {
+    if (!this.isAddress()) {
+      return null;
+    }
+
+    return checkPredirectional(this.getStreetAddress(true));
+  }
+
+  getPostdirectional() {
+    if (!this.isAddress()) {
+      return null;
+    }
+
+    return checkPostdirectional(this.getStreetAddress(true));
   }
 
   getLat() {

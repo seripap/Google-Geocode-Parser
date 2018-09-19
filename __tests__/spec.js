@@ -27,7 +27,7 @@ describe('GeocodeUtils', () => {
 
 describe('GeocodeUtils for a city', () => {
   let city = null;
-  
+
   beforeEach(() => city = new GeocodeUtils(mockCityData) );
 
   it('Should parse city data correctly', () => {
@@ -54,7 +54,7 @@ describe('GeocodeUtils for a city', () => {
 
 describe('GeocodeUtils for a property', () => {
   let property = null;
-  
+
   beforeEach(() => property = new GeocodeUtils(mockPropertyData) );
 
   it('Should parse property data correctly', () => {
@@ -64,7 +64,7 @@ describe('GeocodeUtils for a property', () => {
     expect(property.isState()).toBe(false);
     expect(property.isCounty()).toBe(false);
   });
-  
+
   it('Should just parse', () => {
     expect(property.parse()).toMatchSnapshot();
   });
@@ -76,7 +76,10 @@ describe('GeocodeUtils for a property', () => {
     expect(property.getZip()).toBe('11201');
     expect(property.getGeo()).toBeDefined();
     expect(property.getStreetNumber()).toBe('247');
-    expect(property.getStreetAddress()).toBe('Water Street');
+    expect(property.getStreetAddress()).toBe('North Water Street South');
+    expect(property.getSuffix()).toBe('St');
+    expect(property.getPredirectional()).toBe('N');
+    expect(property.getPostdirectional()).toBe('South');
     expect(property.getLat()).toBe(40.7031);
     expect(property.getLng()).toBe(-73.984034);
     expect(property.getLatLng()).toBe('40.7031,-73.984034');

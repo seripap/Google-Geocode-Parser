@@ -8,8 +8,8 @@
                "types" : [ "street_number" ]
             },
             {
-               "long_name" : "Water Street",
-               "short_name" : "Water St",
+               "long_name" : "North Water Street South",
+               "short_name" : "N Water St South",
                "types" : [ "route" ]
             },
             {
