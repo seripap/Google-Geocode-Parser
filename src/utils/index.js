@@ -1,5 +1,5 @@
 const { filterType, filterComponents } = require('./filters');
-const { parseRoute } = require('./routeParser');
+const { parseRoute } = require('./routesParser');
 
 module.exports = {
   parseRoute,
