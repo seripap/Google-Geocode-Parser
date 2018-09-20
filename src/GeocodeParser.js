@@ -1,5 +1,5 @@
 
-const { RouteParser, filterType, filterComponents } = require('./utils/index')
+const { checkSuffix, checkPredirectional, checkPostdirectional, checkStreetName, filterType, filterComponents } = require('./utils/index')
 
 /**
  * We are parsing raw data from the google geocode API
@@ -18,12 +18,11 @@ function __internals_get_results(data = {}) {
 
 function parseRoute(route) {
   if (route) {
-    const routeParser = new RouteParser(route);
     return {
-      predirectional: routeParser.checkPredirectional(),
-      postdirectional: routeParser.checkPostdirectional(),
-      suffix: routeParser.checkSuffix(),
-      route: routeParser.checkParsedRoute(),
+      predirectional: checkPredirectional(route),
+      postdirectional: checkPostdirectional(route),
+      suffix: checkSuffix(route),
+      streetName: checkStreetName(route),
     }
   }
 
@@ -119,34 +118,34 @@ class GeocodeParser {
   }
 
   getSuffix() {
-    if (!this.isAddress() || !this.parsedRoute) {
+    if (!this.isAddress() || !this.parsedRoute || !this.parsedRoute.suffix) {
       return null;
     }
 
-    return this.parsedRoute.suffix;
+    return this.parsedRoute.suffix.name;
   }
 
   getPredirectional() {
-    if (!this.isAddress() || !this.parsedRoute) {
+    if (!this.isAddress() || !this.parsedRoute || !this.parsedRoute.predirectional) {
       return null;
     }
-    return this.parsedRoute.predirectional;
+    return this.parsedRoute.predirectional.name;
   }
 
   getPostdirectional() {
-    if (!this.isAddress() || !this.parsedRoute) {
+    if (!this.isAddress() || !this.parsedRoute || !this.parsedRoute.postdirectional) {
       return null;
     }
 
-    return this.parsedRoute.postdirectional;
+    return this.parsedRoute.postdirectional.name;
   }
 
-  getParsedRoute() {
-    if (!this.isAddress() || !this.parsedRoute) {
+  getStreetName() {
+    if (!this.isAddress() || !this.parsedRoute || !this.parsedRoute.streetName) {
       return null;
     }
 
-    return this.parsedRoute.route;
+    return this.parsedRoute.streetName.name;
   }
 
   getLat() {

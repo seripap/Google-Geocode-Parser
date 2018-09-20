@@ -1,96 +1,66 @@
 const suffixes = require('./suffixes');
 const directionals = require('./directionals');
 
-class RouteParser {
-  constructor(routes) {
-    this.routes = routes;
-    this.parsedRouteComponents = this.checkRouteComponents();
+function findType(name, i, suffixIdentified = false) {
+  if (directionals.includes(name)) {
+    if (i === 0) {
+      return 'postdirectional';
+    } else {
+      return 'predirectional';
+    }
   }
 
-  findType(route, i, suffixIdentified = false) {
-    if (directionals.includes(route)) {
-      if (i === 0) {
-        return 'postdirectional';
-      } else {
-        return 'predirectional';
-      }
-    }
-
-    if (suffixes.includes(route) && !suffixIdentified) {
-      return 'suffix';
-    }
-
-    return 'parsedRoute';
+  if (suffixes.includes(name) && !suffixIdentified) {
+    return 'suffix';
   }
 
-  checkRouteComponents () {
-    if (!this.routes) {
-      return null;
-    }
-
-    const splitRoute = this.routes.trim().split(' ');
-    let suffixIdentified = false;
-
-    const parsedRoute = splitRoute.reverse().map((route, i) => {
-      let digestedRoute = route;
-      const type = this.findType(route.toUpperCase(), i, suffixIdentified);
-
-      if (type === 'suffix') {
-        suffixIdentified = true;
-      }
-
-      if (type === 'parsedRoute') {
-        digestedRoute = `${route} ${splitRoute[i - 1]}`
-      }
-
-      return {
-        type,
-        route: digestedRoute
-      };
-    });
-
-    return parsedRoute;
-  }
-
-  checkSuffix () {
-    if (!this.parsedRouteComponents) {
-      return null;
-    }
-
-    const data = this.parsedRouteComponents.filter(route => route.type === 'suffix');
-
-    return data.length > 0 ? data[0].route : null;
-  }
-
-  checkPredirectional () {
-    if (!this.parsedRouteComponents) {
-      return null;
-    }
-
-    const data = this.parsedRouteComponents.filter(route => route.type === 'predirectional');
-
-    return data.length > 0 ? data[0].route : null;
-  }
-
-  checkPostdirectional () {
-    if (!this.parsedRouteComponents) {
-      return null;
-    }
-
-    const data = this.parsedRouteComponents.filter(route => route.type === 'postdirectional');
-
-    return data.length > 0 ? data[0].route : null;
-  }
-
-  checkParsedRoute () {
-    if (!this.parsedRouteComponents) {
-      return null;
-    }
-
-    const data = this.parsedRouteComponents.filter(route => route.type === 'parsedRoute');
-
-    return data.length > 0 ? data[0].route : null;
-  }
+  return 'streetName';
 }
 
-module.exports = RouteParser;
+function identify (routes, type) {
+  if (!routes) {
+    return null;
+  }
+
+  const splitRoute = routes.split(' ');
+  let suffixIdentified = false;
+
+  const parsedRoute = splitRoute.reverse().map((name, i) => {
+    const type = findType(name.toUpperCase(), i, suffixIdentified);
+    if (type === 'suffix') {
+      suffixIdentified = true;
+    }
+
+    return {
+      type,
+      name
+    };
+  });
+
+  const identifiedData = parsedRoute.find(route => route.type === type);
+
+  return identifiedData || null;
+}
+
+function checkSuffix (routes) {
+  return identify(routes, 'suffix');
+}
+
+function checkPredirectional (routes) {
+  return identify(routes, 'predirectional');
+}
+
+function checkPostdirectional (routes) {
+  return identify(routes, 'postdirectional');
+}
+
+function checkStreetName (routes) {
+  return identify(routes, 'streetName');
+}
+
+module.exports = {
+  checkSuffix,
+  checkPredirectional,
+  checkPostdirectional,
+  checkStreetName,
+}

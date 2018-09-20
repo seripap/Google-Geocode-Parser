@@ -1,8 +1,11 @@
 const { filterType, filterComponents } = require('./filters');
-const RouteParser = require('./RouteParser');
+const { checkSuffix, checkPredirectional, checkPostdirectional, checkStreetName } = require('./RouteParser');
 
 module.exports = {
-  RouteParser,
+  checkSuffix,
+  checkPredirectional,
+  checkPostdirectional,
+  checkStreetName,
   filterType,
   filterComponents,
 };

@@ -83,13 +83,13 @@ describe('GeocodeUtils for a property', () => {
     expect(property.getStreetNumber()).toBe('247');
     expect(property.getStreetAddress()).toBe('Water Street');
     expect(property.getSuffix()).toBe('St');
-    expect(property.getParsedRoute()).toBe('Water St');
+    expect(property.getStreetName()).toBe('Water');
     expect(predirectional.getSuffix()).toBe('Pl');
     expect(predirectional.getPredirectional()).toBe('N');
-    expect(predirectional.getParsedRoute()).toBe('Ridge Pl');
+    expect(predirectional.getStreetName()).toBe('Ridge');
     expect(postdirectional.getSuffix()).toBe('Dr');
     expect(postdirectional.getPostdirectional()).toBe('W');
-    expect(postdirectional.getParsedRoute()).toBe('Walsh Dr');
+    expect(postdirectional.getStreetName()).toBe('Walsh');
     expect(property.getLat()).toBe(40.7031);
     expect(property.getLng()).toBe(-73.984034);
     expect(property.getLatLng()).toBe('40.7031,-73.984034');
