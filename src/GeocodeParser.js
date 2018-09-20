@@ -1,5 +1,5 @@
 
-const { checkSuffix, checkPredirectional, checkPostdirectional, checkRouteAddress, filterType, filterComponents } = require('./utils/index')
+const { RouteParser, filterType, filterComponents } = require('./utils/index')
 
 /**
  * We are parsing raw data from the google geocode API
@@ -18,11 +18,12 @@ function __internals_get_results(data = {}) {
 
 function parseRoute(route) {
   if (route) {
+    const routeParser = new RouteParser(route);
     return {
-      preDirectional: checkPredirectional(route),
-      postDirectional: checkPostdirectional(route),
-      suffix: checkSuffix(route),
-      route: checkRouteAddress(route),
+      predirectional: routeParser.checkPredirectional(),
+      postdirectional: routeParser.checkPostdirectional(),
+      suffix: routeParser.checkSuffix(),
+      route: routeParser.checkParsedRoute(),
     }
   }
 
@@ -118,7 +119,7 @@ class GeocodeParser {
   }
 
   getSuffix() {
-    if (!this.isAddress()) {
+    if (!this.isAddress() || !this.parsedRoute) {
       return null;
     }
 
@@ -126,21 +127,25 @@ class GeocodeParser {
   }
 
   getPredirectional() {
-    if (!this.isAddress()) {
+    if (!this.isAddress() || !this.parsedRoute) {
       return null;
     }
-    return this.parsedRoute.preDirectional;
+    return this.parsedRoute.predirectional;
   }
 
   getPostdirectional() {
-    if (!this.isAddress()) {
+    if (!this.isAddress() || !this.parsedRoute) {
       return null;
     }
 
-    return this.parsedRoute.postDirectional;
+    return this.parsedRoute.postdirectional;
   }
 
   getParsedRoute() {
+    if (!this.isAddress() || !this.parsedRoute) {
+      return null;
+    }
+
     return this.parsedRoute.route;
   }
 
