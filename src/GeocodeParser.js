@@ -1,4 +1,4 @@
-const { filterType, filterComponents} = require('./utils/filters.js');
+const { parseRoute, filterType, filterComponents } = require('./utils/index')
 
 /**
  * We are parsing raw data from the google geocode API
@@ -15,9 +15,11 @@ function __internals_get_results(data = {}) {
   return results ? results[0] : null;
 }
 
+
 class GeocodeParser {
   constructor(data = {}) {
     this.data = __internals_get_results(data);
+    this.parsedRoute = parseRoute(this.getStreetAddress(true));
   }
 
   get isValid() {
@@ -101,29 +103,60 @@ class GeocodeParser {
     return this.data.geometry;
   }
 
+  getSuffix() {
+    if (!this.isAddress() || !this.parsedRoute || !this.parsedRoute.suffix) {
+      return null;
+    }
+
+    return this.parsedRoute.suffix.name;
+  }
+
+  getPredirectional() {
+    if (!this.isAddress() || !this.parsedRoute || !this.parsedRoute.predirectional) {
+      return null;
+    }
+    return this.parsedRoute.predirectional.name;
+  }
+
+  getPostdirectional() {
+    if (!this.isAddress() || !this.parsedRoute || !this.parsedRoute.postdirectional) {
+      return null;
+    }
+
+    return this.parsedRoute.postdirectional.name;
+  }
+
+  getStreetName() {
+    if (!this.isAddress() || !this.parsedRoute || !this.parsedRoute.streetName) {
+      return null;
+    }
+
+    return this.parsedRoute.streetName.name;
+  }
+
   getLat() {
     const geo = this.getGeo();
-    
+
     if (geo && geo.location) {
       if (typeof geo.location.lat === 'function') {
         return geo.location.lat();
       }
       return geo.location.lat;
     }
-    
+
     return null;
   }
-  
+
   getLng() {
     const geo = this.getGeo();
-    
+
     if (geo && geo.location) {
       if (typeof geo.location.lng === 'function') {
         return geo.location.lng();
       }
       return geo.location.lng;
     }
-    
+
     return null;
   }
 
@@ -134,7 +167,7 @@ class GeocodeParser {
     if (lat && lng) {
       return `${lat},${lng}`;
     }
-    
+
     return null;
   }
 

@@ -1,0 +1,64 @@
+{
+  "results": [{
+    "address_components": [{
+      "long_name": "1502",
+      "short_name": "1502",
+      "types": ["street_number"]
+    }, {
+      "long_name": "Walsh Drive West",
+      "short_name": "Walsh Dr W",
+      "types": ["route"]
+    }, {
+      "long_name": "Beaufort",
+      "short_name": "Beaufort",
+      "types": ["locality", "political"]
+    }, {
+      "long_name": "Beaufort County",
+      "short_name": "Beaufort County",
+      "types": ["administrative_area_level_2", "political"]
+    }, {
+      "long_name": "South Carolina",
+      "short_name": "SC",
+      "types": ["administrative_area_level_1", "political"]
+    }, {
+      "long_name": "United States",
+      "short_name": "US",
+      "types": ["country", "political"]
+    }, {
+      "long_name": "29906",
+      "short_name": "29906",
+      "types": ["postal_code"]
+    }],
+    "formatted_address": "1502 Walsh Dr W, Beaufort, SC 29906, USA",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 32.44242850000001,
+          "lng": -80.71952019999999
+        },
+        "southwest": {
+          "lat": 32.4422911,
+          "lng": -80.7196342
+        }
+      },
+      "location": {
+        "lat": 32.4423911,
+        "lng": -80.7195576
+      },
+      "location_type": "ROOFTOP",
+      "viewport": {
+        "northeast": {
+          "lat": 32.4437087802915,
+          "lng": -80.7182282197085
+        },
+        "southwest": {
+          "lat": 32.4410108197085,
+          "lng": -80.7209261802915
+        }
+      }
+    },
+    "place_id": "ChIJLyhdOnUM_IgRdlJoWv3CRVY",
+    "types": ["premise"]
+  }],
+  "status": "OK"
+}

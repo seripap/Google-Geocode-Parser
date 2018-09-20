@@ -2,6 +2,8 @@ const GeocodeUtils = require('../src/index.js');
 
 const mockCityData = require('../__mocks__/sample-city.json');
 const mockPropertyData = require('../__mocks__/sample-property.json');
+const mockPredirectionalData = require('../__mocks__/sample-predirectional.json');
+const mockPostdirectionalData = require('../__mocks__/sample-postdirectional.json');
 const mockBadData = require('../__mocks__/sample-bad.json');
 const mockNeighbor = require('../__mocks__/sample-neighborhood.json');
 
@@ -13,7 +15,7 @@ describe('GeocodeUtils', () => {
   it('_pluck should pull from results', () => {
     const utils = new GeocodeUtils();
     const utilsWithData = new GeocodeUtils(mockCityData);
-    expect(utils.data).toBe(null);    
+    expect(utils.data).toBe(null);
     expect(utilsWithData.data).toBeDefined();
     expect(utilsWithData.isValid).toBe(true);
   });
@@ -27,7 +29,7 @@ describe('GeocodeUtils', () => {
 
 describe('GeocodeUtils for a city', () => {
   let city = null;
-  
+
   beforeEach(() => city = new GeocodeUtils(mockCityData) );
 
   it('Should parse city data correctly', () => {
@@ -54,22 +56,25 @@ describe('GeocodeUtils for a city', () => {
 
 describe('GeocodeUtils for a property', () => {
   let property = null;
-  
+
   beforeEach(() => property = new GeocodeUtils(mockPropertyData) );
 
   it('Should parse property data correctly', () => {
     expect(property.isCity()).toBe(false);
-    expect(property.isNeighborhood()).toBe(false);    
+    expect(property.isNeighborhood()).toBe(false);
     expect(property.isAddress()).toBe(true);
     expect(property.isState()).toBe(false);
     expect(property.isCounty()).toBe(false);
   });
-  
+
   it('Should just parse', () => {
     expect(property.parse()).toMatchSnapshot();
   });
 
   it('Should get parsable data from helpers', () => {
+    const predirectional = new GeocodeUtils(mockPredirectionalData);
+    const postdirectional = new GeocodeUtils(mockPostdirectionalData);
+
     expect(property.getCity()).toBe('Brooklyn');
     expect(property.getNeighborhood()).toBe('Vinegar Hill');
     expect(property.getState()).toBe('New York');
@@ -77,6 +82,14 @@ describe('GeocodeUtils for a property', () => {
     expect(property.getGeo()).toBeDefined();
     expect(property.getStreetNumber()).toBe('247');
     expect(property.getStreetAddress()).toBe('Water Street');
+    expect(property.getSuffix()).toBe('St');
+    expect(property.getStreetName()).toBe('Water');
+    expect(predirectional.getSuffix()).toBe('Pl');
+    expect(predirectional.getPredirectional()).toBe('N');
+    expect(predirectional.getStreetName()).toBe('Ridge');
+    expect(postdirectional.getSuffix()).toBe('Dr');
+    expect(postdirectional.getPostdirectional()).toBe('W');
+    expect(postdirectional.getStreetName()).toBe('Walsh');
     expect(property.getLat()).toBe(40.7031);
     expect(property.getLng()).toBe(-73.984034);
     expect(property.getLatLng()).toBe('40.7031,-73.984034');
@@ -90,7 +103,7 @@ describe('GeocodeUtils for neighborhood', () => {
 
   it('Should parse neighborhood data correctly', () => {
     expect(hood.isCity()).toBe(true);
-    expect(hood.isNeighborhood()).toBe(true);    
+    expect(hood.isNeighborhood()).toBe(true);
     expect(hood.getNeighborhood()).toBe('North Beach Haven');
   });
 
