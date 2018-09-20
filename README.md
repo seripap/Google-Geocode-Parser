@@ -70,6 +70,10 @@ These are simple built in functions designed to quickly parse results returned f
 - `getGeo()`
 - `getStreetNumber()`
 - `getStreetAddress()`
+- `getSuffix()`
+- `getPredirectional()`
+- `getPostdirectional()`
+- `getStreetName()`
 - `getLat()`
 - `getLng()`
 - `getLatLng()`
