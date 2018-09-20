@@ -58,9 +58,20 @@ function checkStreetName (routes) {
   return identify(routes, 'streetName');
 }
 
+
+function parseRoute(route) {
+  if (route) {
+    return {
+      predirectional: checkPredirectional(route),
+      postdirectional: checkPostdirectional(route),
+      suffix: checkSuffix(route),
+      streetName: checkStreetName(route),
+    }
+  }
+
+  return null;
+}
+
 module.exports = {
-  checkSuffix,
-  checkPredirectional,
-  checkPostdirectional,
-  checkStreetName,
+  parseRoute
 }

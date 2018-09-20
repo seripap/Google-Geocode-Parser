@@ -1,5 +1,4 @@
-
-const { checkSuffix, checkPredirectional, checkPostdirectional, checkStreetName, filterType, filterComponents } = require('./utils/index')
+const { parseRoute, filterType, filterComponents } = require('./utils/index')
 
 /**
  * We are parsing raw data from the google geocode API
@@ -14,19 +13,6 @@ function __internals_get_results(data = {}) {
   }
 
   return results ? results[0] : null;
-}
-
-function parseRoute(route) {
-  if (route) {
-    return {
-      predirectional: checkPredirectional(route),
-      postdirectional: checkPostdirectional(route),
-      suffix: checkSuffix(route),
-      streetName: checkStreetName(route),
-    }
-  }
-
-  return null;
 }
 
 
