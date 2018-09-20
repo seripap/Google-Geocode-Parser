@@ -93,4 +93,4 @@ class RouteParser {
   }
 }
 
-module.exports = AddressCheck;
+module.exports = RouteParser;
