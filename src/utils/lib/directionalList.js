@@ -2,17 +2,17 @@ module.exports = [
   "North",
   "N",
   "Northeast",
-  "Ne",
+  "NE",
   "East",
   "E",
   "Southeast",
-  "S",
+  "SE",
   "South",
   "S",
   "Southwest",
-  "Sw",
+  "SW",
   "West",
   "W",
   "Northwest",
-  "Nw"
+  "NW"
 ];
