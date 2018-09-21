@@ -72,9 +72,6 @@ describe('GeocodeUtils for a property', () => {
   });
 
   it('Should get parsable data from helpers', () => {
-    const predirectional = new GeocodeUtils(mockPredirectionalData);
-    const postdirectional = new GeocodeUtils(mockPostdirectionalData);
-
     expect(property.getCity()).toBe('Brooklyn');
     expect(property.getNeighborhood()).toBe('Vinegar Hill');
     expect(property.getState()).toBe('New York');
@@ -82,17 +79,34 @@ describe('GeocodeUtils for a property', () => {
     expect(property.getGeo()).toBeDefined();
     expect(property.getStreetNumber()).toBe('247');
     expect(property.getStreetAddress()).toBe('Water Street');
-    expect(property.getSuffix()).toBe('St');
+    expect(property.getSuffix()).toBe('Street');
+    expect(property.getPredirectional()).toBe(null);
+    expect(property.getPostdirectional()).toBe(null);
     expect(property.getStreetName()).toBe('Water');
-    expect(predirectional.getSuffix()).toBe('Pl');
-    expect(predirectional.getPredirectional()).toBe('N');
-    expect(predirectional.getStreetName()).toBe('Ridge');
-    expect(postdirectional.getSuffix()).toBe('Dr');
-    expect(postdirectional.getPostdirectional()).toBe('W');
-    expect(postdirectional.getStreetName()).toBe('Walsh');
     expect(property.getLat()).toBe(40.7031);
     expect(property.getLng()).toBe(-73.984034);
     expect(property.getLatLng()).toBe('40.7031,-73.984034');
+  });
+
+  it('Should test custom normalization helpers', () => {
+    const predirectional = new GeocodeUtils(mockPredirectionalData);
+    const postdirectional = new GeocodeUtils(mockPostdirectionalData);
+
+    // predirectional
+    expect(predirectional.getSuffix()).toBe('Place');
+    expect(predirectional.getSuffix(true)).toBe('Pl');
+    expect(predirectional.getPredirectional()).toBe('North');
+    expect(predirectional.getPredirectional(true)).toBe('N');
+    expect(predirectional.getPostdirectional()).toBe(null);
+    expect(predirectional.getStreetName()).toBe('Ridge');
+
+    // postdirectional
+    expect(postdirectional.getSuffix()).toBe('Drive');
+    expect(postdirectional.getSuffix(true)).toBe('Dr');
+    expect(postdirectional.getPredirectional()).toBe(null);
+    expect(postdirectional.getPostdirectional()).toBe('West');
+    expect(postdirectional.getPostdirectional(true)).toBe('W');
+    expect(postdirectional.getStreetName()).toBe('Walsh');
   });
 });
 

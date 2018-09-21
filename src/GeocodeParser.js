@@ -103,27 +103,39 @@ class GeocodeParser {
     return this.data.geometry;
   }
 
-  getSuffix() {
+  getSuffix(useShort = false) {
     if (!this.isAddress() || !this.parsedRoute || !this.parsedRoute.suffix) {
       return null;
     }
 
-    return this.parsedRoute.suffix.name;
+    if (useShort) {
+      return this.parsedRoute.suffix.shortName;
+    }
+
+    return this.parsedRoute.suffix.longName;
   }
 
-  getPredirectional() {
+  getPredirectional(useShort = false) {
     if (!this.isAddress() || !this.parsedRoute || !this.parsedRoute.predirectional) {
       return null;
     }
-    return this.parsedRoute.predirectional.name;
+    if (useShort) {
+      return this.parsedRoute.predirectional.shortName;
+    }
+
+    return this.parsedRoute.predirectional.longName;
   }
 
-  getPostdirectional() {
+  getPostdirectional(useShort = false) {
     if (!this.isAddress() || !this.parsedRoute || !this.parsedRoute.postdirectional) {
       return null;
     }
 
-    return this.parsedRoute.postdirectional.name;
+    if (useShort) {
+      return this.parsedRoute.postdirectional.shortName;
+    }
+
+    return this.parsedRoute.postdirectional.longName;
   }
 
   getStreetName() {
