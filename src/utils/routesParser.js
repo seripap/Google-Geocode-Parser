@@ -1,20 +1,40 @@
-const suffixes = require('./suffixes');
-const directionals = require('./directionals');
+const { suffixList, suffixes, directionals, directionalList } = require('./lib/');
+
+function normalize(name, list) {
+  return list.find(item => item.options.includes(name));
+}
 
 function findType(name, i, suffixIdentified = false) {
-  if (directionals.includes(name)) {
+  if (directionalList.includes(name)) {
+    const normalizedDirectional = normalize(name, directionals);
     if (i === 0) {
-      return 'postdirectional';
+      return {
+        type: 'postdirectional',
+        longName: normalizedDirectional.name,
+        shortName: normalizedDirectional.output,
+      };
     } else {
-      return 'predirectional';
+      return {
+        type: 'predirectional',
+        longName: normalizedDirectional.name,
+        shortName: normalizedDirectional.output,
+      };
     }
   }
 
-  if (suffixes.includes(name) && !suffixIdentified) {
-    return 'suffix';
+  if (suffixList.includes(name) && !suffixIdentified) {
+    const normalizedSuffix = normalize(name, suffixes);
+    return {
+      type: 'suffix',
+      longName: normalizedSuffix.name,
+      shortName: normalizedSuffix.output,
+    };
   }
 
-  return 'streetName';
+  return {
+    type: 'streetName',
+    name
+  };
 }
 
 function identify (routes, type) {
@@ -26,15 +46,12 @@ function identify (routes, type) {
   let suffixIdentified = false;
 
   const parsedRoute = splitRoute.reverse().map((name, i) => {
-    const type = findType(name.toUpperCase(), i, suffixIdentified);
-    if (type === 'suffix') {
+    const data = findType(name, i, suffixIdentified);
+    if (data.type === 'suffix') {
       suffixIdentified = true;
     }
 
-    return {
-      type,
-      name
-    };
+    return data;
   });
 
   const identifiedData = parsedRoute.find(route => route.type === type);
