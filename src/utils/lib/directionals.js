@@ -6,8 +6,8 @@ module.exports = [
   },
   {
     name: "Northeast",
-    options: ["Northeast", "Ne"],
-    output: "Ne",
+    options: ["Northeast", "NE"],
+    output: "NE",
   },
   {
     name: "East",
@@ -16,8 +16,8 @@ module.exports = [
   },
   {
     name: "Southeast",
-    options: ["Southeast", "S"],
-    output: "Se",
+    options: ["Southeast", "SE"],
+    output: "SE",
   },
   {
     name: "South",
@@ -26,8 +26,8 @@ module.exports = [
   },
   {
     name: "Southwest",
-    options: ["Southwest", "Sw"],
-    output: "Sw",
+    options: ["Southwest", "SW"],
+    output: "SW",
   },
   {
     name: "West",
@@ -36,7 +36,7 @@ module.exports = [
   },
   {
     name: "Northwest",
-    options: ["Northwest", "Nw"],
-    output: "Nw",
+    options: ["Northwest", "NW"],
+    output: "NW",
   },
 ];
