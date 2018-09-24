@@ -115,6 +115,10 @@ describe('GeocodeUtils for a property', () => {
     // no suffix
     expect(noSuffix.getStreetAddress()).toBe('Durham East');
     expect(noSuffix.getStreetName()).toBe('Durham');
+    expect(noSuffix.getPredirectional()).toBe(null);
+    expect(noSuffix.getPredirectional(true)).toBe(null);
+    expect(noSuffix.getPostdirectional()).toBe('East');
+    expect(noSuffix.getPostdirectional(true)).toBe('E');
     expect(noSuffix.getSuffix()).toBe(null);
     expect(noSuffix.getSuffix(true)).toBe(null);
 

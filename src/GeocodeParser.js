@@ -27,7 +27,7 @@ class GeocodeParser {
   }
 
   sanitizeStreetName(str) {
-    if (!this.parsedRoute.streetName) {
+    if (!this.parsedRoute.streetName && !this.parsedRoute.streetName.replacedName) {
       return str;
     }
 
