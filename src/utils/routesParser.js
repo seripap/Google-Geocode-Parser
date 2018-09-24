@@ -22,13 +22,21 @@ function findType(name, i, suffixIdentified = false) {
     }
   }
 
-  if (suffixList.includes(name) && !suffixIdentified) {
+  if (suffixList.includes(name)) {
     const normalizedSuffix = normalize(name, suffixes);
-    return {
-      type: 'suffix',
-      longName: normalizedSuffix.name,
-      shortName: normalizedSuffix.output,
-    };
+    if (!suffixIdentified) {
+      return {
+        type: 'suffix',
+        longName: normalizedSuffix.name,
+        shortName: normalizedSuffix.output,
+      };
+    } else if (suffixIdentified && normalizedSuffix.name !== name) {
+      return {
+        type: 'streetName',
+        name: normalizedSuffix.name,
+        replacedName: name,
+      };
+    }
   }
 
   return {
