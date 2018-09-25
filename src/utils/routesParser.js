@@ -30,7 +30,8 @@ function findType(name, i, suffixIdentified = false) {
         longName: normalizedSuffix.name,
         shortName: normalizedSuffix.output,
       };
-    } else if (suffixIdentified && normalizedSuffix.name !== name) {
+    }
+    if (suffixIdentified && normalizedSuffix.name !== name) {
       return {
         type: 'streetName',
         name: normalizedSuffix.name,
