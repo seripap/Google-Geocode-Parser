@@ -6,6 +6,8 @@ const mockPredirectionalData = require('../__mocks__/sample-predirectional.json'
 const mockPostdirectionalData = require('../__mocks__/sample-postdirectional.json');
 const mockBadData = require('../__mocks__/sample-bad.json');
 const mockNeighbor = require('../__mocks__/sample-neighborhood.json');
+const mockNoSuffix = require('../__mocks__/sample-property-noSuffix.json');
+const mockSuffixInStreetName = require('../__mocks__/sample-property-suffixInStreetName.json');
 
 describe('GeocodeUtils', () => {
   it('Should return an instance of itself', () => {
@@ -91,6 +93,8 @@ describe('GeocodeUtils for a property', () => {
   it('Should test custom normalization helpers', () => {
     const predirectional = new GeocodeUtils(mockPredirectionalData);
     const postdirectional = new GeocodeUtils(mockPostdirectionalData);
+    const noSuffix = new GeocodeUtils(mockNoSuffix);
+    const suffixInStreetName = new GeocodeUtils(mockSuffixInStreetName);
 
     // predirectional
     expect(predirectional.getSuffix()).toBe('Place');
@@ -107,6 +111,24 @@ describe('GeocodeUtils for a property', () => {
     expect(postdirectional.getPostdirectional()).toBe('West');
     expect(postdirectional.getPostdirectional(true)).toBe('W');
     expect(postdirectional.getStreetName()).toBe('Walsh');
+
+    // no suffix
+    expect(noSuffix.getStreetAddress()).toBe('Durham East');
+    expect(noSuffix.getStreetName()).toBe('Durham');
+    expect(noSuffix.getPredirectional()).toBe(null);
+    expect(noSuffix.getPredirectional(true)).toBe(null);
+    expect(noSuffix.getPostdirectional()).toBe('East');
+    expect(noSuffix.getPostdirectional(true)).toBe('E');
+    expect(noSuffix.getSuffix()).toBe(null);
+    expect(noSuffix.getSuffix(true)).toBe(null);
+
+    // suffix in steet name
+    expect(suffixInStreetName.parse().formatted).toBe('4539 86th Street Ct W, Bradenton, FL 34210, USA');
+    expect(suffixInStreetName.getStreetAddress()).toBe('86th Street Court West');
+    expect(suffixInStreetName.getStreetAddress(true)).toBe('86th Street Ct W');
+    expect(suffixInStreetName.getStreetName()).toBe('Street');
+    expect(suffixInStreetName.getSuffix()).toBe('Court');
+    expect(suffixInStreetName.getSuffix(true)).toBe('Ct');
   });
 });
 

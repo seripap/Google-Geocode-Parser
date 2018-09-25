@@ -1,0 +1,68 @@
+{
+  "results": [{
+    "address_components": [{
+      "long_name": "4539",
+      "short_name": "4539",
+      "types": ["street_number"]
+    }, {
+      "long_name": "86th Street Court West",
+      "short_name": "86th St Ct W",
+      "types": ["route"]
+    }, {
+      "long_name": "Bradenton",
+      "short_name": "Bradenton",
+      "types": ["locality", "political"]
+    }, {
+      "long_name": "Manatee County",
+      "short_name": "Manatee County",
+      "types": ["administrative_area_level_2", "political"]
+    }, {
+      "long_name": "Florida",
+      "short_name": "FL",
+      "types": ["administrative_area_level_1", "political"]
+    }, {
+      "long_name": "United States",
+      "short_name": "US",
+      "types": ["country", "political"]
+    }, {
+      "long_name": "34210",
+      "short_name": "34210",
+      "types": ["postal_code"]
+    }, {
+      "long_name": "2237",
+      "short_name": "2237",
+      "types": ["postal_code_suffix"]
+    }],
+    "formatted_address": "4539 86th St Ct W, Bradenton, FL 34210, USA",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 27.4582748,
+          "lng": -82.6490336
+        },
+        "southwest": {
+          "lat": 27.4581117,
+          "lng": -82.6491817
+        }
+      },
+      "location": {
+        "lat": 27.4581979,
+        "lng": -82.64912489999999
+      },
+      "location_type": "ROOFTOP",
+      "viewport": {
+        "northeast": {
+          "lat": 27.4595422302915,
+          "lng": -82.64775866970848
+        },
+        "southwest": {
+          "lat": 27.4568442697085,
+          "lng": -82.6504566302915
+        }
+      }
+    },
+    "place_id": "ChIJuSMDwVIRw4gRkB8Qis7UeA4",
+    "types": ["premise"]
+  }],
+  "status": "OK"
+}

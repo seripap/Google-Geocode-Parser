@@ -1,0 +1,68 @@
+{
+  "results": [{
+    "address_components": [{
+      "long_name": "1815",
+      "short_name": "1815",
+      "types": ["street_number"]
+    }, {
+      "long_name": "Durham East",
+      "short_name": "Durham E",
+      "types": ["route"]
+    }, {
+      "long_name": "Northeast Virginia Beach",
+      "short_name": "Northeast Virginia Beach",
+      "types": ["neighborhood", "political"]
+    }, {
+      "long_name": "Virginia Beach",
+      "short_name": "Virginia Beach",
+      "types": ["locality", "political"]
+    }, {
+      "long_name": "Virginia",
+      "short_name": "VA",
+      "types": ["administrative_area_level_1", "political"]
+    }, {
+      "long_name": "United States",
+      "short_name": "US",
+      "types": ["country", "political"]
+    }, {
+      "long_name": "23454",
+      "short_name": "23454",
+      "types": ["postal_code"]
+    }, {
+      "long_name": "3136",
+      "short_name": "3136",
+      "types": ["postal_code_suffix"]
+    }],
+    "formatted_address": "1815 Durham E, Virginia Beach, VA 23454, USA",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 36.8584524,
+          "lng": -76.02863909999999
+        },
+        "southwest": {
+          "lat": 36.8583309,
+          "lng": -76.0287365
+        }
+      },
+      "location": {
+        "lat": 36.8584165,
+        "lng": -76.0286966
+      },
+      "location_type": "ROOFTOP",
+      "viewport": {
+        "northeast": {
+          "lat": 36.8597406302915,
+          "lng": -76.02733881970848
+        },
+        "southwest": {
+          "lat": 36.8570426697085,
+          "lng": -76.0300367802915
+        }
+      }
+    },
+    "place_id": "ChIJMXD_E67ruokRa2bqZr_lXbk",
+    "types": ["premise"]
+  }],
+  "status": "OK"
+}

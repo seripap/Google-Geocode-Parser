@@ -26,6 +26,16 @@ class GeocodeParser {
     return this.data ? true : false;
   }
 
+  sanitizeStreetName(str) {
+    if (!this.parsedRoute.streetName && !this.parsedRoute.streetName.replacedName) {
+      return str;
+    }
+
+    const { replacedName, name } = this.parsedRoute.streetName;
+
+    return str.replace(replacedName, name);
+  }
+
   getComponent(key, useShort = false) {
     if (!this.data) {
       return null;
@@ -80,6 +90,11 @@ class GeocodeParser {
     if (!this.isAddress()) {
       return null;
     }
+
+    if (useShort && this.parsedRoute && this.parsedRoute.streetName && this.parsedRoute.streetName.replacedName) {
+      return this.sanitizeStreetName(this.getComponent('route', useShort));
+    }
+
     return this.getComponent('route', useShort);
   }
 
@@ -185,7 +200,7 @@ class GeocodeParser {
 
   parse() {
     return {
-      formatted: this.data.formatted_address,
+      formatted: this.parsedRoute && this.parsedRoute.streetName && this.parsedRoute.streetName.replacedName ? this.sanitizeStreetName(this.data.formatted_address) : this.data.formatted_address,
       address: this.getComponent('street_address'),
       city: this.getComponent('locality') || this.getComponent('sublocality'),
       geometry: this.data.geometry,
