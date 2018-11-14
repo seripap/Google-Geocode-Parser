@@ -2,12 +2,16 @@
   "name": "google-geocode-parser",
   "version": "1.4.3",
   "description": "A helper utility to help parse geocoded addresses from Google",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "jest --coverage",
-    "test:dev": "jest --watchAll"
+    "test:dev": "jest --watchAll",
+    "prepare": "rm -rf build && babel ./src --out-dir ./dist"
   },
   "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
     "jest": "^22.4.3"
   },
   "repository": {
