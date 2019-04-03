@@ -9,10 +9,10 @@
     "prepare": "rm -rf build && babel ./src --out-dir ./dist"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.5",
-    "@babel/core": "^7.1.6",
-    "@babel/preset-env": "^7.1.6",
-    "jest": "^22.4.3"
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "jest": "^24.7.0"
   },
   "repository": {
     "type": "git",
