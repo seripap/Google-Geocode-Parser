@@ -64,6 +64,7 @@ These are simple built in functions designed to quickly parse results returned f
 - `isCounty()`
 - `isZip()` 
 - `getCity()`
+- `getCountry()`
 - `getState()`
 - `getNeighborhood()`
 - `getZip()`
