@@ -102,6 +102,10 @@ class GeocodeParser {
     return this.getComponent('locality', useShort) || this.getComponent('sublocality', useShort);
   }
 
+  getCountry(useShort = false) {
+    return this.getComponent('country', useShort);
+  }
+
   getState(useShort = false) {
     return this.getComponent('administrative_area_level_1', useShort);
   }

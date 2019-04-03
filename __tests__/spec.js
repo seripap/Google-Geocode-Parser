@@ -48,6 +48,7 @@ describe('GeocodeUtils for a city', () => {
 
   it('Should get parsable data from helpers', () => {
     expect(city.getCity()).toBe('Miami');
+    expect(city.getCountry()).toBe('United States');
     expect(city.getNeighborhood()).toBe(null);
     expect(city.getState()).toBe('Florida');
     expect(city.getZip()).toBe(null);
@@ -75,6 +76,7 @@ describe('GeocodeUtils for a property', () => {
 
   it('Should get parsable data from helpers', () => {
     expect(property.getCity()).toBe('Brooklyn');
+    expect(property.getCountry()).toBe('United States');    
     expect(property.getNeighborhood()).toBe('Vinegar Hill');
     expect(property.getState()).toBe('New York');
     expect(property.getZip()).toBe('11201');
