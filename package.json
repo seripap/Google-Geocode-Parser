@@ -1,6 +1,6 @@
 {
   "name": "google-geocode-parser",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "description": "A helper utility to help parse geocoded addresses from Google",
   "main": "dist/index.js",
   "scripts": {
